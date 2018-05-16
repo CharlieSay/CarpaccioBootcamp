@@ -25,15 +25,21 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="/productcatalogue">Product Page</a></li>
+            <li><a href="/orderform">Order Form</a></li>
 		</ul>
 	</div>
 	</div>
 	</nav>
 
 	<div class="container">
-
+		<h1>CARPACCIO</h1>
+		<h2>Contact</h2>
+		<h3>Email : James@Carpaccio.com</h3>
+		<h3>Telephone : 0161 669 9888</h3>
+		<h2>Address</h2>
+		<h3>Carpaccio plc<br>1 Tony Wilson Place<br>Manchester<br>M15 4FN</h3>
 	</div>
 	<!-- /.container -->
 

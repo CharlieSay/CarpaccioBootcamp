@@ -1,2 +1,7 @@
+com/spring/PackageLevel.class
 com/spring/SpringBootWebApplication.class
+com/spring/ProductCatalogue.class
+com/spring/OrderFormController.class
+com/spring/ProductCatalogue$1.class
+com/spring/User.class
 com/spring/WelcomeController.class
