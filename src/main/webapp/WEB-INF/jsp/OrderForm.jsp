@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
-<title>test</title>
+<title>Order Form</title>
     <script type="text/javascript" src="/js/OrderForm.js"></script>
     <link rel="stylesheet" type="text/css"
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -55,9 +55,9 @@
         <br><br>
         <table class="table table-borderless" align="center">
             <thead>
-                <th>Gold</th>
-                <th>Silver</th>
-                <th>Bronze</th>
+                <th class="gold">Gold</th>
+                <th class="silver">Silver</th>
+                <th class="bronze">Bronze</th>
             </thead>
             <tbody>
             <td><input type="text" class="form-control" /></td>

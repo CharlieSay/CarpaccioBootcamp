@@ -13,11 +13,13 @@ function processOrder(document) {
             Accept: "application/json",
             "Content-Type": "application/json"
         },
-        // body: JSON.stringify({
-        //      firstNameJson: firstName,
-        //      secondNameJson:secondName,
-        //      emailJson: email,
-        //      phoneNumberJson: phoneNumber
-        //  })
     });
+     clearPage(document.getElementById('firstName'))
+     clearPage(document.getElementById('secondName'))
+     clearPage(document.getElementById('emailAddress'))
+     clearPage(document.getElementById('phoneNumber'))
+}
+
+function clearPage(clear){
+    clear.value = ''
 }

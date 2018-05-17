@@ -20,6 +20,7 @@ public class ProductCatalogue {
         return "ProductCatalogue";
     }
 
+    @Deprecated
     private String getPackageDetails(String chosenPackage){
         PackageLevel chosenPackageEnum = null;
         if (chosenPackage.equalsIgnoreCase("gold")){chosenPackageEnum = PackageLevel.GOLD;}

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
-<title>test</title>
+<title>Carpaccio</title>
     <%--<script type="text/javascript" src="/js/getText.js"></script>--%>
     <link rel="stylesheet" type="text/css"
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />

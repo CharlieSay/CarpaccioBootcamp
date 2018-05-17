@@ -1,5 +1,7 @@
-package com.spring;
+package com.spring.Controller;
 
+import com.spring.Business.OrderControllerClass;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +22,9 @@ public class OrderFormController {
                                 @RequestParam("secondName") String secondName,
                                 @RequestParam("emailAddress") String emailAddress,
                                 @RequestParam("phoneNumber") String phoneNumber) {
-        System.out.println(firstName);
-        System.out.println(secondName);
-        System.out.println(emailAddress);
-        System.out.println(phoneNumber);
-        return ResponseEntity.ok("OK OK OK OK ");
+        if(OrderControllerClass.createNewOrder(firstName, secondName, emailAddress, phoneNumber))
+            return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
     }
 
 }
