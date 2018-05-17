@@ -21,8 +21,9 @@ public class OrderFormController {
     public ResponseEntity login(@RequestParam("firstName") String firstName,
                                 @RequestParam("secondName") String secondName,
                                 @RequestParam("emailAddress") String emailAddress,
-                                @RequestParam("phoneNumber") String phoneNumber) {
-        if(OrderControllerClass.createNewOrder(firstName, secondName, emailAddress, phoneNumber))
+                                @RequestParam("phoneNumber") String phoneNumber,
+                                @RequestParam("orderContents") String orderContents) {
+        if(OrderControllerClass.createNewOrder(firstName, secondName, emailAddress, phoneNumber,orderContents))
             return ResponseEntity.ok(HttpStatus.OK);
         return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
     }

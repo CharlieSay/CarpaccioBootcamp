@@ -22,7 +22,8 @@ public class StatusController {
             str += "\"firstName\": \""+order.getFirstName()+"\",";
             str += "\"secondName\": \""+order.getSecondName()+"\",";
             str += "\"emailAddress\": \""+order.getEmailAddress()+"\",";
-            str += "\"phoneNumber\": \""+order.getPhoneNumber()+"\" ";
+            str += "\"phoneNumber\": \""+order.getPhoneNumber()+"\",";
+            str += "\"orderContents\": \""+order.getOrderContents()+"\" ";
             str += "},";
         }
         str = str.substring(    0,str.length()-1);

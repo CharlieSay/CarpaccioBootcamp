@@ -7,9 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class WelcomeController{
-
-	private String message = "Hello World";
+public class HomeController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
 	public String welcome(Map<String, Object> model) {

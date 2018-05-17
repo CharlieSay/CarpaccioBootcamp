@@ -13,9 +13,9 @@ public class OrderControllerClass {
         return orderList;
     }
 
-    public static boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber){
+    public static boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber, String orderContents){
         try{
-            orderList.add(new Order(firstName,secondName,emailAddress,phoneNumber));
+            orderList.add(new Order(firstName,secondName,emailAddress,phoneNumber,orderContents));
             return true;
         }catch(Exception e){
             e.printStackTrace();

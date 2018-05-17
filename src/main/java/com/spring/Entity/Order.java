@@ -9,7 +9,12 @@ public class Order{
     private String secondName;
     private String emailAddress;
     private String phoneNumber;
+    private String orderContents;
     private Integer orderNumber;
+
+    public String getOrderContents() {
+        return orderContents;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -51,12 +56,13 @@ public class Order{
         return numberGenerated;
     }
 
-    public Order(String firstName, String secondName, String emailAddress, String phoneNumber) {
+    public Order(String firstName, String secondName, String emailAddress, String phoneNumber, String orderContents) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.orderNumber = orderNumberGen();
+        this.orderContents = orderContents;
     }
 
 }
