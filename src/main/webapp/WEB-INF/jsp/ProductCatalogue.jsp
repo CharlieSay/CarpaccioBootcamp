@@ -21,7 +21,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Spring Boot</a>
+				<a class="navbar-brand" href="#">Carpaccio</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -35,19 +35,55 @@
 	<div class="container">
 		<h1 align="center">Product Catalogue</h1>
 
-	<div class="gold">
-		<h2 class="gold">Gold Details: ${goldDetails}</h2>
-		<h2 class="gold">Gold Price : &pound${goldPrice}</h2>
-	</div>
-	<div class="silver">
-		<h2 class="silver">Silver Details : ${goldDetails}</h2>
-		<h2 class="silver">Silver Price : &pound${silverPrice}</h2>
-	</div>
-	<div class="bronze">
-		<h2 class="bronze">Bronze Details : ${goldDetails}</h2>
-		<h2 class="bronze">Bronze Price : &pound${bronzePrice}</h2>
-	</div>
-
+        <table class="table table-borderless" align="center">
+            <thead>
+            <th class="gold">Gold : &pound${goldPrice}</th>
+            <th class="silver">Silver : &pound${silverPrice}</th>
+            <th class="bronze">Bronze : &pound${bronzePrice}</th>
+            </thead>
+            <tbody>
+            <td id="GoldItemList">
+                <ul class="list-group">
+                <li class="list-group-item">
+                10 x 8 Prints <span class="badge badge-primary badge-pill">2</span></li>
+                <li class="list-group-item">
+                5 x 7 Prints <span class="badge badge-primary badge-pill">4</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Wallet Prints <span class="badge badge-primary badge-pill">4</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Keyring Prints <span class="badge badge-primary badge-pill">4</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Bookmarks <span class="badge badge-primary badge-pill">2</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Sheet Sticker Prints<span class="badge badge-primary badge-pill">1</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Fridge Magnets<span class="badge badge-primary badge-pill">2</span></li>
+                </ul>
+            </td>
+            <td id="SilverItemList">
+                <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                10 x 8 Prints <span class="badge badge-primary badge-pill">1</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                5 x 7 Prints <span class="badge badge-primary badge-pill">3</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Wallet Prints <span class="badge badge-primary badge-pill">4</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Keyring Prints <span class="badge badge-primary badge-pill">4</span></li>
+                </ul>
+            </td>
+            <td id="BronzeItemList">
+                <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                5 x 7 Prints <span class="badge badge-primary badge-pill">3</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Wallet Prints <span class="badge badge-primary badge-pill">4</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Keyring Prints <span class="badge badge-primary badge-pill">4</span></li>
+                </ul>
+            </td>
+            </tbody>
+        </table>
     </div>
 	<!-- /.container -->
 

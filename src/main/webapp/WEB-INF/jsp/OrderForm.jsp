@@ -60,9 +60,37 @@
                 <th class="bronze">Bronze</th>
             </thead>
             <tbody>
-            <td><input type="text" id="goldOrder" class="form-control" /></td>
-            <td><input type="text" id="silverOrder" class="form-control" /></td>
-            <td><input type="text" id="bronzeOrder" class="form-control" /></td>
+            <td><div class="form-group">
+                <select class="form-control" id="goldOrder">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            </td>
+            <td><div class="form-group">
+                <select class="form-control" id="silverOrder">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div></td>
+            <td><div class="form-group">
+                <select class="form-control" id="bronzeOrder">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div></td>
             </tbody>
         </table>
         <br><button type="button" onclick=processOrder(document)>Submit Order</button>

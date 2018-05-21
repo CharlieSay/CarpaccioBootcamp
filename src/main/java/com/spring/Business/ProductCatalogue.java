@@ -1,4 +1,4 @@
-package com.spring;
+package com.spring.Business;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,16 +18,6 @@ public class ProductCatalogue {
         model.put("silverDetails", getPackageContent(PackageLevel.SILVER));
         model.put("bronzeDetails", getPackageContent(PackageLevel.BRONZE));
         return "ProductCatalogue";
-    }
-
-    @Deprecated
-    private String getPackageDetails(String chosenPackage){
-        PackageLevel chosenPackageEnum = null;
-        if (chosenPackage.equalsIgnoreCase("gold")){chosenPackageEnum = PackageLevel.GOLD;}
-        if (chosenPackage.equalsIgnoreCase("silver")){chosenPackageEnum = PackageLevel.SILVER;}
-        if (chosenPackage.equalsIgnoreCase("bronze")){chosenPackageEnum = PackageLevel.BRONZE;}
-        String packagePriceAndContent = getPackageContent(chosenPackageEnum) + "\n Price - £" +getPackageLevelPrice(chosenPackageEnum);
-        return packagePriceAndContent;
     }
 
     private String getPackageContent(PackageLevel packageLevel){
