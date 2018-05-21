@@ -1,6 +1,6 @@
 package com.spring.Entity;
 
-import com.spring.Business.OrderControllerClass;
+import com.spring.Business.OrderList;
 
 import java.util.Random;
 
@@ -12,7 +12,20 @@ public class Order{
     private String goldQuantity;
     private String silverQuantity;
     private String bronzeQuantity;
-    private Integer orderNumber;
+    private String orderNumber;
+    private OrderProgress orderProgress;
+
+    public Order(String firstName, String secondName, String emailAddress, String phoneNumber, String goldQuantity, String silverQuantity, String bronzeQuantity) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+        this.goldQuantity = goldQuantity;
+        this.silverQuantity = silverQuantity;
+        this.bronzeQuantity = bronzeQuantity;
+        this.orderNumber = orderNumberGen();
+        this.orderProgress = OrderProgress.CREATED;
+    }
 
     public String getSilverQuantity() {
         return silverQuantity;
@@ -42,29 +55,26 @@ public class Order{
         return phoneNumber;
     }
 
-    public Integer getOrderNumber(){
+    public String getOrderNumber(){
         return orderNumber;
     }
 
-    private Integer orderNumberGen(){
-        Random rnd = new Random();
-        Integer numberGenerated = (10000000 + rnd.nextInt(90000000));
-        for (Order order : OrderControllerClass.getOrderList()){
-            if (numberGenerated == order.getOrderNumber())
-                numberGenerated = 10000000 + rnd.nextInt(90000000);
-        }
-        return numberGenerated;
+    public OrderProgress getOrderProgress() {
+        return orderProgress;
     }
 
-    public Order(String firstName, String secondName, String emailAddress, String phoneNumber, String goldQuantity, String silverQuantity, String bronzeQuantity) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.emailAddress = emailAddress;
-        this.phoneNumber = phoneNumber;
-        this.goldQuantity = goldQuantity;
-        this.silverQuantity = silverQuantity;
-        this.bronzeQuantity = bronzeQuantity;
-        this.orderNumber = orderNumberGen();
+    public void setOrderProgress(OrderProgress orderProgress) {
+        this.orderProgress = orderProgress;
+    }
+
+    private String orderNumberGen(){
+        Random rnd = new Random();
+        Integer numberGenerated = (10000000 + rnd.nextInt(90000000));
+        for (Order order : OrderList.getOrderList()){
+            if (numberGenerated == Integer.parseInt(order.getOrderNumber()))
+                numberGenerated = 10000000 + rnd.nextInt(90000000);
+        }
+        return numberGenerated.toString();
     }
 
 }

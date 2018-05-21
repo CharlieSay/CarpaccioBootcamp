@@ -1,6 +1,6 @@
 package com.spring.Controller;
 
-import com.spring.Business.OrderControllerClass;
+import com.spring.Business.OrderList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class OrderFormController {
                                 @RequestParam("goldQuantity") String goldQuantity,
                                 @RequestParam("silverQuantity") String silverQuantity,
                                 @RequestParam("bronzeQuantity") String bronzeQuantity) {
-        if(OrderControllerClass.createNewOrder(firstName, secondName, emailAddress,
+        if(OrderList.createNewOrder(firstName, secondName, emailAddress,
                 phoneNumber,goldQuantity,silverQuantity,bronzeQuantity))
             return ResponseEntity.ok(HttpStatus.OK);
         return ResponseEntity.ok(HttpStatus.BAD_REQUEST);

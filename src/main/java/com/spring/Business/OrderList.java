@@ -5,7 +5,7 @@ import com.spring.Entity.Order;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderControllerClass {
+public class OrderList {
 
     private static List<Order> orderList = new ArrayList<>();
 
@@ -22,6 +22,15 @@ public class OrderControllerClass {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static Order getOrderFromList(String orderId){
+        for (Order order : orderList){
+            if (order.getOrderNumber().equalsIgnoreCase(orderId)){
+                return order;
+            }
+        }
+        return null;
     }
 
 }
