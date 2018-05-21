@@ -13,9 +13,10 @@ public class OrderControllerClass {
         return orderList;
     }
 
-    public static boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber, String orderContents){
+    public static boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber,
+                                         String goldQuantity, String silverQuantity, String bronzeQuantity){
         try{
-            orderList.add(new Order(firstName,secondName,emailAddress,phoneNumber,orderContents));
+            orderList.add(new Order(firstName,secondName,emailAddress,phoneNumber,goldQuantity,silverQuantity,bronzeQuantity));
             return true;
         }catch(Exception e){
             e.printStackTrace();

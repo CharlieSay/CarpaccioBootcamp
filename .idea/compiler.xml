@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="taxBanding" />
+        <module name="Carpaccio" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="taxBanding" target="1.8" />
+      <module name="Carpaccio" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

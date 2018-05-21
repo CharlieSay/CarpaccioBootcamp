@@ -3,16 +3,17 @@ function processOrder(document) {
      var secondName = document.getElementById('secondName').value
      var email = document.getElementById('emailAddress').value
      var phoneNumber = document.getElementById('phoneNumber').value
-     var orderContentsGold = 'Gold : ' + document.getElementById('goldOrder').value
-     var orderContentsSilver = ' Silver : ' + document.getElementById('silverOrder').value
-     var orderContentsBronze = ' Bronze : ' + document.getElementById('bronzeOrder').value
-    var orderContents = orderContentsGold + orderContentsSilver + orderContentsBronze
+     var orderContentsGold = document.getElementById('goldOrder').value
+     var orderContentsSilver = document.getElementById('silverOrder').value
+     var orderContentsBronze = document.getElementById('bronzeOrder').value
     fetch('http://localhost:8080/orderform' +
         '?firstName=' + firstName +
         '&secondName='+secondName+
         '&emailAddress='+email+
         '&phoneNumber='+phoneNumber+
-        '&orderContents='+orderContents,{
+        '&goldQuantity='+orderContentsGold+
+        '&silverQuantity='+orderContentsSilver+
+        '&bronzeQuantity='+orderContentsBronze,{
         method: "POST",
         headers: {
             Accept: "application/json",

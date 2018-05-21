@@ -23,7 +23,9 @@ public class StatusController {
             str += "\"secondName\": \""+order.getSecondName()+"\",";
             str += "\"emailAddress\": \""+order.getEmailAddress()+"\",";
             str += "\"phoneNumber\": \""+order.getPhoneNumber()+"\",";
-            str += "\"orderContents\": \""+order.getOrderContents()+"\" ";
+            str += "\"goldQuantity\": \""+order.getGoldQuantity()+"\",";
+            str += "\"silverQuantity\": \""+order.getSilverQuantity()+"\",";
+            str += "\"bronzeQuantity\": \""+order.getBronzeQuantity()+"\" ";
             str += "},";
         }
         str = str.substring(    0,str.length()-1);

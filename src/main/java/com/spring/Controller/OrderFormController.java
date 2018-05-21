@@ -22,8 +22,11 @@ public class OrderFormController {
                                 @RequestParam("secondName") String secondName,
                                 @RequestParam("emailAddress") String emailAddress,
                                 @RequestParam("phoneNumber") String phoneNumber,
-                                @RequestParam("orderContents") String orderContents) {
-        if(OrderControllerClass.createNewOrder(firstName, secondName, emailAddress, phoneNumber,orderContents))
+                                @RequestParam("goldQuantity") String goldQuantity,
+                                @RequestParam("silverQuantity") String silverQuantity,
+                                @RequestParam("bronzeQuantity") String bronzeQuantity) {
+        if(OrderControllerClass.createNewOrder(firstName, secondName, emailAddress,
+                phoneNumber,goldQuantity,silverQuantity,bronzeQuantity))
             return ResponseEntity.ok(HttpStatus.OK);
         return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
     }
