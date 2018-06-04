@@ -1,7 +1,6 @@
 package com.spring.Business;
 
 import com.spring.Entity.Order;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +12,10 @@ public class OrderList {
         return orderList;
     }
 
-    public static boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber,
-                                         String goldQuantity, String silverQuantity, String bronzeQuantity){
+    public boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber,
+                                         String goldQuantity, String silverQuantity, String bronzeQuantity, OrderList orderList){
         try{
-            orderList.add(new Order(firstName,secondName,emailAddress,phoneNumber,goldQuantity,silverQuantity,bronzeQuantity));
+            getOrderList().add(new Order(firstName, secondName, emailAddress, phoneNumber, goldQuantity, silverQuantity, bronzeQuantity, orderList));
             return true;
         }catch(Exception e){
             e.printStackTrace();

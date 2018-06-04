@@ -1,10 +1,8 @@
 package com.spring.Controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.spring.Business.OrderList;
 import com.spring.Entity.Order;
-import org.springframework.http.HttpStatus;
+import com.spring.Utility.JSONBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,38 +24,37 @@ public class StatusController {
 //        return ResponseEntity.ok(listJson);
 //    }
 
-    @RequestMapping(path = "/status", method = RequestMethod.GET)
-    public String welcome(Map<String, Object> model) {
-        model.put("allOrders",getCurrentList());
-        return "TrackProgress";
-    }
+        @RequestMapping(path = "/order", method = RequestMethod.GET)
+        public String welcome(Map<String, Object> model) {
+            model.put("allOrders", getCurrentList());
+            return "TrackProgress";
+        }
 
-    private String getCurrentList(){
+
+    public static String getCurrentList(){
         List<Order> orderList = OrderList.getOrderList();
         if (orderList.isEmpty()) return "";
-        String str = "{";
-        for (Order order : orderList) {
-            str += "\"" + order.getOrderNumber() + "\": {";
-            str += "\"firstName\": \"" + order.getFirstName() + "\",";
-            str += "\"secondName\": \"" + order.getSecondName() + "\",";
-            str += "\"emailAddress\": \"" + order.getEmailAddress() + "\",";
-            str += "\"phoneNumber\": \"" + order.getPhoneNumber() + "\",";
-            str += "\"goldQuantity\": \"" + order.getGoldQuantity() + "\",";
-            str += "\"silverQuantity\": \"" + order.getSilverQuantity() + "\",";
-            str += "\"bronzeQuantity\": \"" + order.getBronzeQuantity() + "\" ";
-            str += "},";
+        JSONBuilder jsonBuilder = new JSONBuilder();
+        for (Order order : orderList){
+            jsonBuilder.addField(order.getOrderNumber())
+                    .addLine("firstName", order.getFirstName())
+                    .addLine("secondName", order.getSecondName())
+                    .addLine("emailAddress", order.getEmailAddress())
+                    .addLine("phoneNumber", order.getPhoneNumber())
+                    .addLine("goldQuantity", order.getGoldQuantity())
+                    .addLine("silverQuantity", order.getSilverQuantity())
+                    .addLine("bronzeQuantity", order.getBronzeQuantity())
+                    .endField();
         }
-        str = str.substring(0, str.length() - 1);
-        str += "}";
-        return str;
+        jsonBuilder.end();
+        return jsonBuilder.toString();
     }
 
-
-    @RequestMapping(value = "/{orderId}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity changeOrderDetails(@PathVariable(value = "orderId") String orderId, @RequestBody String body) throws IOException {
-        if (!body.contains("orderStatus")) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        ObjectNode node = new ObjectMapper().readValue(body, ObjectNode.class);
-        Logger.getGlobal().log(Level.INFO, "Order Status : " + node.get("orderStatus"));
+    @RequestMapping(value = "/order/{orderId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity changeOrderDetails(@PathVariable(value = "orderId") String orderId) throws IOException {
+//        if (!body.contains("orderStatus")) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//        ObjectNode node = new ObjectMapper().readValue(body, ObjectNode.class);
+        Logger.getGlobal().log(Level.INFO, "Order Status : " + OrderList.getOrderFromList(orderId).getOrderProgress());
         Logger.getGlobal().log(Level.INFO, "ID : " + orderId);
         return ResponseEntity.ok("OK");
 

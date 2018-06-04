@@ -15,7 +15,7 @@ public class Order{
     private String orderNumber;
     private OrderProgress orderProgress;
 
-    public Order(String firstName, String secondName, String emailAddress, String phoneNumber, String goldQuantity, String silverQuantity, String bronzeQuantity) {
+    public Order(String firstName, String secondName, String emailAddress, String phoneNumber, String goldQuantity, String silverQuantity, String bronzeQuantity, OrderList orderList) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.emailAddress = emailAddress;
@@ -23,7 +23,7 @@ public class Order{
         this.goldQuantity = goldQuantity;
         this.silverQuantity = silverQuantity;
         this.bronzeQuantity = bronzeQuantity;
-        this.orderNumber = orderNumberGen();
+        this.orderNumber = orderNumberGen(orderList);
         this.orderProgress = OrderProgress.CREATED;
     }
 
@@ -67,10 +67,10 @@ public class Order{
         this.orderProgress = orderProgress;
     }
 
-    private String orderNumberGen(){
+    private String orderNumberGen(OrderList orderlist){
         Random rnd = new Random();
         Integer numberGenerated = (10000000 + rnd.nextInt(90000000));
-        for (Order order : OrderList.getOrderList()){
+        for (Order order : orderlist.getOrderList()){
             if (numberGenerated == Integer.parseInt(order.getOrderNumber()))
                 numberGenerated = 10000000 + rnd.nextInt(90000000);
         }

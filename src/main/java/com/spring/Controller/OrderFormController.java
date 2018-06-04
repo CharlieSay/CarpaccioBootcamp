@@ -12,6 +12,9 @@ import java.util.Map;
 
 @Controller
 public class OrderFormController {
+
+    private OrderList orderList = new OrderList();
+
     @RequestMapping(path = "/orderform", method = RequestMethod.GET)
     public String welcome(Map<String, Object> model) {
         return "OrderForm";
@@ -25,8 +28,8 @@ public class OrderFormController {
                                 @RequestParam("goldQuantity") String goldQuantity,
                                 @RequestParam("silverQuantity") String silverQuantity,
                                 @RequestParam("bronzeQuantity") String bronzeQuantity) {
-        if(OrderList.createNewOrder(firstName, secondName, emailAddress,
-                phoneNumber,goldQuantity,silverQuantity,bronzeQuantity))
+        if(orderList.createNewOrder(firstName, secondName, emailAddress,
+                phoneNumber,goldQuantity,silverQuantity,bronzeQuantity, orderList))
             return ResponseEntity.ok(HttpStatus.OK);
         return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
     }

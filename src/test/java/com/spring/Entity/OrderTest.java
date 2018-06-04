@@ -17,7 +17,8 @@ public class OrderTest {
                 "07428111111",
                 "1",
                 "0",
-                "0");
+                "0",
+                null);
         Order secondOrder = new Order(
                 "Cody",
                 "Bentley",
@@ -25,7 +26,8 @@ public class OrderTest {
                 "01618307000",
                 "0",
                 "2",
-                "1");
+                "1",
+                null);
 
         Assert.assertFalse(firstOrder.getOrderNumber()==secondOrder.getOrderNumber());
         Logger.getGlobal().log(Level.INFO, (firstOrder.getOrderNumber()+" // "+secondOrder.getOrderNumber()));

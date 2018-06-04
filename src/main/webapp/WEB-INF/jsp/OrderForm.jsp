@@ -12,11 +12,11 @@
 	<spring:url value="/css/ProductCatalogue.css" var="springCss" />
 	<link href="${springCss}" rel="stylesheet" />
 
-<c:url value="/css/HomePage.css" var="jstlCss" />
-<link href="${jstlCss}" rel="stylesheet" />
+<c:url value="/css/HomePage.css" var="jstlCss"/>
+<link href="${jstlCss}" rel="stylesheet"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
-<body>
+<body onload="orderFormLoad()">
 
 	<nav class="navbar navbar-inverse">
 		<div class="container">
@@ -53,6 +53,7 @@
             </div>
         </form>
         <br><br>
+        <form>
         <table class="table table-borderless" align="center">
             <thead>
                 <th class="gold">Gold</th>
@@ -83,6 +84,13 @@
             </div></td>
             <td><div class="form-group">
                 <select class="form-control" id="bronzeOrder">
+                    <script>
+                        document.addEventListener("change", function(){
+                            $(document).ready(function(){
+                                checkContents(document)
+                            });
+                        });
+                    </script>
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -93,14 +101,21 @@
             </div></td>
             </tbody>
         </table>
-        <br><button type="button" onclick=processOrder(document)>Submit Order</button>
+        </form>
+
+  <button class="btn btn-primary" id="submit" type="button" onclick=processOrder(document)>Submit Order</button>
+
+        <div id="orderNumberConf">
+            <h2>
+                Order Number : 12345678
+            </h2>
+        </div>
+
     </div>
 	<!-- /.container -->
 
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
 </body>
 
 </html>
