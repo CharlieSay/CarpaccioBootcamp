@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="taxBanding:war">
-    <output-path />
-    <root id="archive" name="Carpaccio.war">
-      <element id="artifact" artifact-name="taxBanding:war exploded" />
-    </root>
-  </artifact>
-</component>
