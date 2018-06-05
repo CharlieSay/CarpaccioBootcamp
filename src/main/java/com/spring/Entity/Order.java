@@ -67,8 +67,8 @@ public class Order{
         this.orderProgress = orderProgress;
     }
 
-    private String orderNumberGen(Integer previousNumber){
-        return previousNumber.toString();
+    private String orderNumberGen(Integer orderNumber){
+        return orderNumber.toString();
     }
 
 }
