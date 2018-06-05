@@ -1,6 +1,6 @@
 package com.spring.Controller;
 
-import com.spring.Business.OrderList;
+import com.spring.Business.OrderManage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import java.util.Map;
 @Controller
 public class OrderFormController {
 
-    private OrderList orderList = new OrderList();
+    private OrderManage orderManage = new OrderManage();
 
     @RequestMapping(path = "/orderform", method = RequestMethod.GET)
     public String welcome(Map<String, Object> model) {
@@ -28,8 +28,8 @@ public class OrderFormController {
                                 @RequestParam("goldQuantity") String goldQuantity,
                                 @RequestParam("silverQuantity") String silverQuantity,
                                 @RequestParam("bronzeQuantity") String bronzeQuantity) {
-        if(orderList.createNewOrder(firstName, secondName, emailAddress,
-                phoneNumber,goldQuantity,silverQuantity,bronzeQuantity, orderList))
+        if(orderManage.createNewOrder(firstName, secondName, emailAddress,
+                phoneNumber,goldQuantity,silverQuantity,bronzeQuantity))
             return ResponseEntity.ok(HttpStatus.OK);
         return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
     }

@@ -3,8 +3,10 @@ package com.spring.Business;
 import com.spring.Entity.Order;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class OrderList {
+public class OrderManage {
 
     private static List<Order> orderList = new ArrayList<>();
 
@@ -13,12 +15,13 @@ public class OrderList {
     }
 
     public boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber,
-                                         String goldQuantity, String silverQuantity, String bronzeQuantity, OrderList orderList){
+                                         String goldQuantity, String silverQuantity, String bronzeQuantity){
         try{
-            getOrderList().add(new Order(firstName, secondName, emailAddress, phoneNumber, goldQuantity, silverQuantity, bronzeQuantity, orderList));
+            Order createdOrder = new Order(firstName, secondName, emailAddress, phoneNumber, goldQuantity, silverQuantity, bronzeQuantity, orderList.size());
+            getOrderList().add(createdOrder);
+            Logger.getGlobal().log(Level.INFO, createdOrder.getOrderNumber());
             return true;
         }catch(Exception e){
-            e.printStackTrace();
             return false;
         }
     }

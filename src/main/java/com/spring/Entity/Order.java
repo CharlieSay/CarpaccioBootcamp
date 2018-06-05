@@ -1,6 +1,6 @@
 package com.spring.Entity;
 
-import com.spring.Business.OrderList;
+import com.spring.Business.OrderManage;
 
 import java.util.Random;
 
@@ -15,7 +15,7 @@ public class Order{
     private String orderNumber;
     private OrderProgress orderProgress;
 
-    public Order(String firstName, String secondName, String emailAddress, String phoneNumber, String goldQuantity, String silverQuantity, String bronzeQuantity, OrderList orderList) {
+    public Order(String firstName, String secondName, String emailAddress, String phoneNumber, String goldQuantity, String silverQuantity, String bronzeQuantity, Integer previousOrderNumber) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.emailAddress = emailAddress;
@@ -23,7 +23,7 @@ public class Order{
         this.goldQuantity = goldQuantity;
         this.silverQuantity = silverQuantity;
         this.bronzeQuantity = bronzeQuantity;
-        this.orderNumber = orderNumberGen(orderList);
+        this.orderNumber = orderNumberGen(previousOrderNumber);
         this.orderProgress = OrderProgress.CREATED;
     }
 
@@ -67,14 +67,8 @@ public class Order{
         this.orderProgress = orderProgress;
     }
 
-    private String orderNumberGen(OrderList orderlist){
-        Random rnd = new Random();
-        Integer numberGenerated = (10000000 + rnd.nextInt(90000000));
-        for (Order order : orderlist.getOrderList()){
-            if (numberGenerated == Integer.parseInt(order.getOrderNumber()))
-                numberGenerated = 10000000 + rnd.nextInt(90000000);
-        }
-        return numberGenerated.toString();
+    private String orderNumberGen(Integer previousNumber){
+        return previousNumber.toString();
     }
 
 }

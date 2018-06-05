@@ -3,7 +3,7 @@ package com.spring.Utility;
 public class JSONBuilder {
 
     private static final String QUOTES = "\"";
-    private static final String OPENER = ": {";
+    private static final String OPENER = ":{";
 
     private StringBuilder stringReturn = new StringBuilder();
 
@@ -17,7 +17,7 @@ public class JSONBuilder {
     }
 
     public JSONBuilder addField(String field){
-        stringReturn.append(QUOTES + field + QUOTES +":{");
+        stringReturn.append(QUOTES + field + QUOTES + OPENER);
         return this;
     }
 
@@ -27,11 +27,12 @@ public class JSONBuilder {
         return this;
     }
 
-    public void end(){
+    public JSONBuilder end(){
         if (stringReturn.charAt(stringReturn.length()-1) == ','){
             stringReturn.deleteCharAt(stringReturn.length()-1);
         }
         stringReturn.append("}");
+        return this;
     }
 
     @Override

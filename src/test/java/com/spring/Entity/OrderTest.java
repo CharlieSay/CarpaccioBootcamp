@@ -18,7 +18,7 @@ public class OrderTest {
                 "1",
                 "0",
                 "0",
-                null);
+                0);
         Order secondOrder = new Order(
                 "Cody",
                 "Bentley",
@@ -27,10 +27,9 @@ public class OrderTest {
                 "0",
                 "2",
                 "1",
-                null);
+                1);
 
         Assert.assertFalse(firstOrder.getOrderNumber()==secondOrder.getOrderNumber());
-        Logger.getGlobal().log(Level.INFO, (firstOrder.getOrderNumber()+" // "+secondOrder.getOrderNumber()));
     }
 
 }

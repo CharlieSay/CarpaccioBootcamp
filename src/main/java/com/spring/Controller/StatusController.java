@@ -1,6 +1,6 @@
 package com.spring.Controller;
 
-import com.spring.Business.OrderList;
+import com.spring.Business.OrderManage;
 import com.spring.Entity.Order;
 import com.spring.Utility.JSONBuilder;
 import org.springframework.http.MediaType;
@@ -32,7 +32,7 @@ public class StatusController {
 
 
     public static String getCurrentList(){
-        List<Order> orderList = OrderList.getOrderList();
+        List<Order> orderList = OrderManage.getOrderList();
         if (orderList.isEmpty()) return "";
         JSONBuilder jsonBuilder = new JSONBuilder();
         for (Order order : orderList){
@@ -54,7 +54,7 @@ public class StatusController {
     public ResponseEntity changeOrderDetails(@PathVariable(value = "orderId") String orderId) throws IOException {
 //        if (!body.contains("orderStatus")) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 //        ObjectNode node = new ObjectMapper().readValue(body, ObjectNode.class);
-        Logger.getGlobal().log(Level.INFO, "Order Status : " + OrderList.getOrderFromList(orderId).getOrderProgress());
+        Logger.getGlobal().log(Level.INFO, "Order Status : " + OrderManage.getOrderFromList(orderId).getOrderProgress());
         Logger.getGlobal().log(Level.INFO, "ID : " + orderId);
         return ResponseEntity.ok("OK");
 
