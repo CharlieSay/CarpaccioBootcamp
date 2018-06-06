@@ -35,8 +35,8 @@ public class DatabaseConnection {
                             Order order = new Order(
                                     rs.getString("FIRST_NAME"),
                                     rs.getString("SECOND_NAME"),
-                                    rs.getString("EMAIL_ADDRESS"),
                                     rs.getString("PHONE_NUMBER"),
+                                    rs.getString("EMAIL_ADDRESS"),
                                     rs.getInt("GOLD_QUANTITY"),
                                     rs.getInt("SILVER_QUANTITY"),
                                     rs.getInt("BRONZE_QUANTITY"),
@@ -57,23 +57,27 @@ public class DatabaseConnection {
         }
     }
 
-    public void addOrder(Order order){
-        String query = " insert into users (FIRST_NAME, SECOND_NAME, PHONE_NUMBER, " +
+    public boolean AddOrder(Order order){
+        String query = " insert into orders (FIRST_NAME, SECOND_NAME, PHONE_NUMBER, " +
                 "EMAIL_ADDRESS, GOLD_QUANTITY, SILVER_QUANTITY, BRONZE_QUANTITY, ORDER_PROGRESS)" +
                 " values (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CarpaccioOrders",
                 "root", getPassword())) {
             try (PreparedStatement preparedStmt = con.prepareStatement(query)) {
-                preparedStmt.setString(2, order.getFirstName());
-                preparedStmt.setString(3, order.getSecondName());
-                preparedStmt.setString(4, order.getPhoneNumber());
-                preparedStmt.setString(5, order.getEmailAddress());
-                preparedStmt.setInt(6, order.getGoldQuantity());
-                preparedStmt.setInt(7, order.getSilverQuantity());
-                preparedStmt.setInt(8, order.getBronzeQuantity());
+                preparedStmt.setString(1, order.getFirstName());
+                preparedStmt.setString(2, order.getSecondName());
+                preparedStmt.setString(3, order.getPhoneNumber());
+                preparedStmt.setString(4, order.getEmailAddress());
+                preparedStmt.setInt(5, order.getGoldQuantity());
+                preparedStmt.setInt(6, order.getSilverQuantity());
+                preparedStmt.setInt(7, order.getBronzeQuantity());
+                preparedStmt.setString(8, order.getOrderProgress().toString());
+                preparedStmt.execute();
+                return true;
             }
         }catch (SQLException e){
             e.printStackTrace();
+            return false;
         }
     }
 }

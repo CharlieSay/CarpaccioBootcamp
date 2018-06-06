@@ -45,4 +45,20 @@ public class DatabaseConnectionTest {
 
     }
 
+    @Test
+    public void should_InsertNewOrder_WhenRealOrder(){
+        Integer orderNumber = 2;
+        String firstName = "Daniel";
+        String secondName = "Pepper";
+        String phoneNumber = "07428691234";
+        String emailAddress = "daniel.pepper@autotrader.co.uk";
+        Integer goldQuantity = 3;
+        Integer silverQuantity = 2;
+        Integer bronzeQuantity = 1;
+
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+
+        Order order = new Order(firstName,secondName,phoneNumber,emailAddress,goldQuantity,silverQuantity,bronzeQuantity,orderNumber);
+        assertTrue(databaseConnection.AddOrder(order));
+    }
 }

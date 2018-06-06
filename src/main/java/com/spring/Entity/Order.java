@@ -5,21 +5,21 @@ import com.spring.Business.OrderManage;
 import java.util.Random;
 
 public class Order{
-    private String orderNumber;
     private String firstName;
     private String secondName;
-    private String emailAddress;
     private String phoneNumber;
+    private String emailAddress;
     private Integer goldQuantity;
     private Integer silverQuantity;
     private Integer bronzeQuantity;
     private OrderProgress orderProgress;
+    private String orderNumber;
 
-    public Order(String firstName, String secondName, String emailAddress, String phoneNumber, Integer goldQuantity, Integer silverQuantity, Integer bronzeQuantity, Integer previousOrderNumber) {
+    public Order(String firstName, String secondName, String phoneNumber, String emailAddress, Integer goldQuantity, Integer silverQuantity, Integer bronzeQuantity, Integer previousOrderNumber) {
         this.firstName = firstName;
         this.secondName = secondName;
-        this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
         this.goldQuantity = goldQuantity;
         this.silverQuantity = silverQuantity;
         this.bronzeQuantity = bronzeQuantity;
