@@ -16,9 +16,9 @@ public class DatabaseConnectionTest {
         String secondName = "Say";
         String phoneNumber = "07428690009";
         String emailAddress = "charlie.say@autotrader.co.uk";
-        String goldQuantity = "0";
-        String silverQuantity = "0";
-        String bronzeQuantity = "0";
+        Integer goldQuantity = 0;
+        Integer silverQuantity = 0;
+        Integer bronzeQuantity = 0;
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
 

@@ -25,9 +25,9 @@ public class OrderManageTest {
                 "Say",
                 "charlie.say@example.com",
                 "01618301234",
-                "1",
-                "2",
-                "3"
+                1,
+                2,
+                3
         );
 
         Integer sizeOfList = OrderManage.getOrderList().size();
@@ -42,27 +42,27 @@ public class OrderManageTest {
                 "Say",
                 "charlie.say@example.com",
                 "01618301234",
-                "1",
-                "2",
-                "3"
+                1,
+                2,
+                3
         );
         orderManage.createNewOrder(
                 "Charlie",
                 "Say",
                 "charlie.say@example.com",
                 "01618301234",
-                "1",
-                "2",
-                "3"
+                1,
+                2,
+                3
         );
         orderManage.createNewOrder(
                 "Charlie",
                 "Say",
                 "charlie.say@example.com",
                 "01618301234",
-                "1",
-                "2",
-                "3"
+                1,
+                2,
+                3
         );
 
         Integer sizeOfList = OrderManage.getOrderList().size();
@@ -77,9 +77,9 @@ public class OrderManageTest {
         String secondName = "Say";
         String emailAddress = "charlie.say@example.com";
         String phoneNumber = "01618301234";
-        String goldQuantity = "1";
-        String silverQuantity = "2";
-        String bronzeQuantity = "3";
+        Integer goldQuantity = 1;
+        Integer silverQuantity = 2;
+        Integer bronzeQuantity = 3;
 
         orderManage.createNewOrder(
                 firstName,
@@ -95,9 +95,9 @@ public class OrderManageTest {
                 "Doodie",
                 "Dave.doodie@example.com",
                 "01813812312",
-                "7",
-                "8",
-                "9"
+                7,
+                8,
+                9
         );
 
 

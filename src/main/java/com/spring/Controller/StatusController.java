@@ -41,9 +41,9 @@ public class StatusController {
                     .addLine("secondName", order.getSecondName())
                     .addLine("emailAddress", order.getEmailAddress())
                     .addLine("phoneNumber", order.getPhoneNumber())
-                    .addLine("goldQuantity", order.getGoldQuantity())
-                    .addLine("silverQuantity", order.getSilverQuantity())
-                    .addLine("bronzeQuantity", order.getBronzeQuantity())
+                    .addLine("goldQuantity", order.getGoldQuantity().toString())
+                    .addLine("silverQuantity", order.getSilverQuantity().toString())
+                    .addLine("bronzeQuantity", order.getBronzeQuantity().toString())
                     .endField();
         }
         jsonBuilder.end();

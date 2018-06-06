@@ -15,7 +15,7 @@ public class OrderManage {
     }
 
     public boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber,
-                                         String goldQuantity, String silverQuantity, String bronzeQuantity){
+                                         Integer goldQuantity, Integer silverQuantity, Integer bronzeQuantity){
         try{
             Order createdOrder = new Order(firstName, secondName, emailAddress, phoneNumber, goldQuantity, silverQuantity, bronzeQuantity, orderList.size());
             getOrderList().add(createdOrder);

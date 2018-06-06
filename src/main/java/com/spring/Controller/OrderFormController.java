@@ -29,7 +29,7 @@ public class OrderFormController {
                                 @RequestParam("silverQuantity") String silverQuantity,
                                 @RequestParam("bronzeQuantity") String bronzeQuantity) {
         if(orderManage.createNewOrder(firstName, secondName, emailAddress,
-                phoneNumber,goldQuantity,silverQuantity,bronzeQuantity))
+                phoneNumber,Integer.parseInt(goldQuantity),Integer.parseInt(silverQuantity),Integer.parseInt(bronzeQuantity)))
             return ResponseEntity.ok(HttpStatus.OK);
         return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
     }
