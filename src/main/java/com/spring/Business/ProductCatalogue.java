@@ -25,9 +25,8 @@ public class ProductCatalogue {
                 return 30;
             case BRONZE:
                 return 23;
-            default:
-                return 0;
         }
+        return 0;
     }
 }
 

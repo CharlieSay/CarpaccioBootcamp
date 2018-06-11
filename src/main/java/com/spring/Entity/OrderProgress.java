@@ -6,9 +6,10 @@ public enum OrderProgress {
     BILLED,
     PRE_SHIPPING,
     SHIPPED,
-    RECIEVED;
+    RECEIVED;
 
     public static OrderProgress getProgress(String progressLiteral){
+        progressLiteral = progressLiteral.toUpperCase();
         switch(progressLiteral){
             case ("CREATED"):
                 return CREATED;
@@ -18,8 +19,8 @@ public enum OrderProgress {
                 return PRE_SHIPPING;
             case ("SHIPPED"):
                 return SHIPPED;
-            case ("RECIEVED"):
-                return RECIEVED;
+            case ("RECEIVED"):
+                return RECEIVED;
             default:
                 return null;
         }

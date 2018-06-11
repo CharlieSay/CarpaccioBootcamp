@@ -1,9 +1,5 @@
 package com.spring.Entity;
 
-import com.spring.Business.OrderManage;
-
-import java.util.Random;
-
 public class Order{
     private String firstName;
     private String secondName;

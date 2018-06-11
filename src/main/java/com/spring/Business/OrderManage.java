@@ -1,38 +1,37 @@
 package com.spring.Business;
 
+import com.spring.Config.LocalConfig;
 import com.spring.Entity.Order;
-import java.util.ArrayList;
-import java.util.List;
+import com.spring.Utility.DatabaseConnection;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderManage {
 
-    private static List<Order> orderList = new ArrayList<>();
-
-    public static List<Order> getOrderList() {
-        return orderList;
-    }
-
     public boolean createNewOrder(String firstName, String secondName, String emailAddress, String phoneNumber,
                                          Integer goldQuantity, Integer silverQuantity, Integer bronzeQuantity){
         try{
-            Order createdOrder = new Order(firstName, secondName, emailAddress, phoneNumber, goldQuantity, silverQuantity, bronzeQuantity, orderList.size());
-            getOrderList().add(createdOrder);
-            Logger.getGlobal().log(Level.INFO, createdOrder.getOrderNumber());
+            DatabaseConnection dbc = new DatabaseConnection(new LocalConfig());
+            Order createdOrder = new Order(firstName, secondName, emailAddress, phoneNumber, goldQuantity,
+                    silverQuantity, bronzeQuantity, dbc.getNewOrderNumber());
+            dbc.addOrder(createdOrder);
             return true;
         }catch(Exception e){
+            Logger.getGlobal().log(Level.WARNING, "Context : " + e.toString());
             return false;
         }
     }
 
-    public static Order getOrderFromList(String orderId){
-        for (Order order : orderList){
-            if (order.getOrderNumber().equalsIgnoreCase(orderId)){
-                return order;
-            }
+    public Order getOrderFromList(String orderId){
+        DatabaseConnection dbc = new DatabaseConnection(new LocalConfig());
+        try{
+            Integer orderIdInteger = Integer.parseInt(orderId);
+            return dbc.getOrder(orderIdInteger);
+        }catch(NumberFormatException e){
+            Logger.getGlobal().log(Level.WARNING, "Context : " + e.toString());
+            return null;
         }
-        return null;
     }
 
 }

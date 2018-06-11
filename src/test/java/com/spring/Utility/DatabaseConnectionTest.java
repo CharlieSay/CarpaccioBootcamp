@@ -1,11 +1,14 @@
 package com.spring.Utility;
 
+import com.spring.Config.LocalConfig;
 import com.spring.Entity.Order;
 import com.spring.Entity.OrderProgress;
 import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.mockito.BDDMockito.willThrow;
+import static org.mockito.Mockito.mock;
 
 public class DatabaseConnectionTest {
 
@@ -20,9 +23,9 @@ public class DatabaseConnectionTest {
         Integer silverQuantity = 0;
         Integer bronzeQuantity = 0;
 
-        DatabaseConnection databaseConnection = new DatabaseConnection();
+        DatabaseConnection databaseConnection = new DatabaseConnection(new LocalConfig());
 
-        Order resultingOrder = databaseConnection.GetOrder(orderNumber);
+        Order resultingOrder = databaseConnection.getOrder(orderNumber);
 
         assertEquals(firstName,resultingOrder.getFirstName());
         assertEquals(secondName,resultingOrder.getSecondName());
@@ -37,9 +40,9 @@ public class DatabaseConnectionTest {
     @Test
     public void should_ReturnNoOrder_WhenOrderIDDoesntMatch(){
         Integer orderNumber = 1234;
-        DatabaseConnection databaseConnection = new DatabaseConnection();
+        DatabaseConnection databaseConnection = new DatabaseConnection(new LocalConfig());
 
-        Order resultingOrder = databaseConnection.GetOrder(orderNumber);
+        Order resultingOrder = databaseConnection.getOrder(orderNumber);
 
         Assert.assertNull(resultingOrder);
 
@@ -47,7 +50,6 @@ public class DatabaseConnectionTest {
 
     @Test
     public void should_InsertNewOrder_WhenRealOrder(){
-        Integer orderNumber = 2;
         String firstName = "Daniel";
         String secondName = "Pepper";
         String phoneNumber = "07428691234";
@@ -56,9 +58,25 @@ public class DatabaseConnectionTest {
         Integer silverQuantity = 2;
         Integer bronzeQuantity = 1;
 
-        DatabaseConnection databaseConnection = new DatabaseConnection();
+        DatabaseConnection databaseConnection = new DatabaseConnection(new LocalConfig());
 
-        Order order = new Order(firstName,secondName,phoneNumber,emailAddress,goldQuantity,silverQuantity,bronzeQuantity,orderNumber);
-        assertTrue(databaseConnection.AddOrder(order));
+        Order order = new Order(firstName,secondName,phoneNumber,emailAddress,goldQuantity,silverQuantity,bronzeQuantity,databaseConnection.getNewOrderNumber());
+        assertTrue(databaseConnection.addOrder(order));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void should_ThrowSQLException_ReturningFalse(){
+        DatabaseConnection databaseConnection = mock(DatabaseConnection.class);
+        Order faultOrder = new Order("","","","",
+                null, null, null,null);
+
+        willThrow(new NullPointerException()).given(databaseConnection).addOrder(faultOrder);
+
+        databaseConnection.addOrder(faultOrder);
+    }
+
+    @Test
+    public void getOrderNumber(){
+        System.out.println("Order Number : " + new DatabaseConnection(new LocalConfig()).getNewOrderNumber());
     }
 }

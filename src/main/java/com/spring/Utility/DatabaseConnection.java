@@ -1,33 +1,24 @@
 package com.spring.Utility;
 
+import com.spring.Config.Config;
 import com.spring.Entity.Order;
 import com.spring.Entity.OrderProgress;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DatabaseConnection {
 
-    private String getPassword(){
-        final String P_PATH = "/Users/charlie.say/WorkProject/Apprenticey Stuff/Carpaccio/DB_CARPACCIO_P.txt";
-        try {
-            try (BufferedReader in = new BufferedReader(new FileReader(P_PATH))) {
-                String line;
-                while ((line = in.readLine()) != null) {
-                    return line;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    Config config;
+
+    public DatabaseConnection(Config config) {
+        this.config = config;
     }
 
-
-    public Order GetOrder(Integer orderId) {
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CarpaccioOrders",
-                "root", getPassword())) {
+    public Order getOrder(Integer orderId) {
+        try (Connection con = DriverManager.getConnection(config.getDatabaseURL(),
+                config.getDatabaseUsername(), config.getPassword())) {
             try (Statement stmt = con.createStatement()) {
                 try (ResultSet rs = stmt.executeQuery("SELECT * FROM Orders")) {
                     while (rs.next())
@@ -46,38 +37,52 @@ public class DatabaseConnection {
                             return order;
                         }
                     return null;
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    return null;
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getGlobal().log(Level.WARNING, "Context : " + e.toString());
             return null;
         }
     }
 
-    public boolean AddOrder(Order order){
-        String query = " insert into orders (FIRST_NAME, SECOND_NAME, PHONE_NUMBER, " +
+    public boolean addOrder(Order order){
+        String query = " insert into orders (ORDER_NUMBER, FIRST_NAME, SECOND_NAME, PHONE_NUMBER, " +
                 "EMAIL_ADDRESS, GOLD_QUANTITY, SILVER_QUANTITY, BRONZE_QUANTITY, ORDER_PROGRESS)" +
-                " values (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CarpaccioOrders",
-                "root", getPassword())) {
+                " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection con = DriverManager.getConnection(config.getDatabaseURL(),
+                config.getDatabaseUsername(), config.getPassword())) {
             try (PreparedStatement preparedStmt = con.prepareStatement(query)) {
-                preparedStmt.setString(1, order.getFirstName());
-                preparedStmt.setString(2, order.getSecondName());
-                preparedStmt.setString(3, order.getPhoneNumber());
-                preparedStmt.setString(4, order.getEmailAddress());
-                preparedStmt.setInt(5, order.getGoldQuantity());
-                preparedStmt.setInt(6, order.getSilverQuantity());
-                preparedStmt.setInt(7, order.getBronzeQuantity());
-                preparedStmt.setString(8, order.getOrderProgress().toString());
+                preparedStmt.setInt(1, Integer.parseInt(order.getOrderNumber()));
+                preparedStmt.setString(2, order.getFirstName());
+                preparedStmt.setString(3, order.getSecondName());
+                preparedStmt.setString(4, order.getPhoneNumber());
+                preparedStmt.setString(5, order.getEmailAddress());
+                preparedStmt.setInt(6, order.getGoldQuantity());
+                preparedStmt.setInt(7, order.getSilverQuantity());
+                preparedStmt.setInt(8, order.getBronzeQuantity());
+                preparedStmt.setString(9, order.getOrderProgress().toString());
                 preparedStmt.execute();
                 return true;
             }
         }catch (SQLException e){
-            e.printStackTrace();
+            Logger.getGlobal().log(Level.WARNING, "Context : " + e.toString());
             return false;
         }
     }
+
+    public Integer getNewOrderNumber() {
+        try (Connection con = DriverManager.getConnection(config.getDatabaseURL(),
+                config.getDatabaseUsername(), config.getPassword())) {
+            try (Statement stmt = con.createStatement()) {
+                try (ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM Orders")) {
+                    rs.next();
+                    return rs.getInt(1)+1;
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getGlobal().log(Level.WARNING, "Context : " + e.toString());
+            return null;
+        }
+    }
+
 }
