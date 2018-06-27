@@ -58,6 +58,9 @@
                 <configuration>
                     <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
                     <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+                    <excludes>
+                        <exclude>**/*Carpaccio.*</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>

@@ -14,10 +14,12 @@
 	 -->
 <c:url value="/css/HomePage.css" var="jstlCss" />
 <link href="${jstlCss}" rel="stylesheet" />
+    <script type="text/javascript" src="/js/HomePage.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
-
+    <script type="text/javascript"  src="https://l2.io/ip.js?var=userip"> var userip; </script>
+    <script>getIP(userip)</script>
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">

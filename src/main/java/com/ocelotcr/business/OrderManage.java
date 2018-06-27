@@ -13,7 +13,7 @@ public class OrderManage {
                                          Integer goldQuantity, Integer silverQuantity, Integer bronzeQuantity){
         try{
             DatabaseConnection dbc = new DatabaseConnection(new LocalConfig());
-            Order createdOrder = new Order(firstName, secondName, emailAddress, phoneNumber, goldQuantity,
+            Order createdOrder = new Order(firstName, secondName, phoneNumber, emailAddress, goldQuantity,
                     silverQuantity, bronzeQuantity, dbc.getNewOrderNumber());
             dbc.addOrder(createdOrder);
             return true;
