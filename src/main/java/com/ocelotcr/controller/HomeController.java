@@ -3,7 +3,7 @@ package com.ocelotcr.controller;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-import com.ocelotcr.entity.Connection;
+import com.ocelotcr.entity.PageConnection;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class HomeController {
 
     @RequestMapping(value = "/" , method = RequestMethod.POST)
     public ResponseEntity createNewOrder(@RequestParam("ipAddress") String ipAddress){
-        new Connection(ipAddress,LocalDateTime.now(),"HomePage");
+        new PageConnection(ipAddress,LocalDateTime.now(),"HomePage");
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
