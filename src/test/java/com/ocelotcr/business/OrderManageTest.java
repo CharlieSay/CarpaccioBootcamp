@@ -18,8 +18,8 @@ public class OrderManageTest {
 
     @Test
     public void should_CreateOrder_ThenReturnTrue(){
-        assertTrue(orderManage.createNewOrder("Ron","Phillips","0161",
-                "ronPhil@phillips.com", 1,2,3));
+        assertTrue(orderManage.createNewOrder("Ron","Phillips","ronPhil@phillips.com",
+                "0161", 1,2,3));
     }
 
     @Test(expected = Exception.class)
