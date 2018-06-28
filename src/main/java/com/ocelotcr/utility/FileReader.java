@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 public class FileReader {
 
-    private static final Logger logger = Logger.getLogger("com.ocelotcr.orderform");
+    private static final Logger logger = Logger.getLogger("com.ocelotcr.filereader");
     private final String fileName;
     private List<String> contents = new ArrayList<>();
 

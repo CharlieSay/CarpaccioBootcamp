@@ -105,12 +105,11 @@
 
   <button class="btn btn-primary" id="submit" type="button" onclick=processOrder(document)>Submit Order</button>
 
-        <div id="orderNumberConf">
-            <h2>
-                Order Number : 12345678
-            </h2>
-        </div>
+        <h2>
+        <div id="orderNumber">
 
+        </div>
+        </h2>
     </div>
 	<!-- /.container -->
 

@@ -3,22 +3,18 @@ package com.ocelotcr.controller;
 import com.ocelotcr.business.OrderManage;
 import com.ocelotcr.utility.JSONBuilder;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
 public class OrderFormController {
-
-    @Autowired
-    private HttpServletRequest context;
 
     private static final Logger logger = Logger.getLogger("com.ocelotcr.orderform");
     private OrderManage orderManage = new OrderManage();
@@ -28,7 +24,7 @@ public class OrderFormController {
         return "OrderForm";
     }
 
-    @RequestMapping(value = "/orderform" , method = RequestMethod.POST)
+    @RequestMapping(value = "/orderform" , method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createNewOrder(@RequestParam("firstName") String firstName,
                                          @RequestParam("secondName") String secondName,
                                          @RequestParam("emailAddress") String emailAddress,
@@ -40,8 +36,8 @@ public class OrderFormController {
             Integer orderNumber = orderManage.createNewOrder(firstName, secondName, emailAddress,
                     phoneNumber,Integer.parseInt(goldQuantity),Integer.parseInt(silverQuantity),Integer.parseInt(bronzeQuantity));
             logger.info("Order Created : ".concat(orderNumber.toString()));
-            JSONBuilder jsonBuilder = new JSONBuilder().addField(orderNumber.toString()).endField().end();
-                return ResponseEntity.ok(HttpStatus.OK);
+            JSONBuilder jsonBuilder = new JSONBuilder().addLine("orderNumber",orderNumber.toString()).end();
+                return ResponseEntity.ok(jsonBuilder.toString());
         }catch(Exception e){
             logger.error("Context : " + e.toString());
             return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
