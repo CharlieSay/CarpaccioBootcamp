@@ -17,7 +17,11 @@ public class StatusControllerTest {
     @Test
     public void should_ReturnOKEntity_WhenValidOrderDetails(){
         StatusController statusController = new StatusController();
-        Assert.assertEquals(ResponseEntity.ok("OK"),statusController.getOrderDetails("1"));
+        Assert.assertEquals(ResponseEntity.ok("{\"1\":{\"firstName\":\"Charlie\"" +
+                ",\"secondName\":\"Say\",\"phoneNumber\":\"07428690009\"" +
+                ",\"emailAddress\":\"charlie.say@autotrader.co.uk\"" +
+                ",\"goldQuantity\":\"0\",\"silverQuantity\":\"0\"" +
+                ",\"bronzeQuantity\":\"0\"}}"),statusController.getOrderDetails("1"));
     }
 
 }

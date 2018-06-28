@@ -1,8 +1,8 @@
 package com.ocelotcr.controller;
 
-import com.ocelotcr.Carpaccio;
 import com.ocelotcr.business.OrderManage;
-import org.slf4j.LoggerFactory;
+import com.ocelotcr.utility.JSONBuilder;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Controller
 public class OrderFormController {
@@ -22,7 +20,7 @@ public class OrderFormController {
     @Autowired
     private HttpServletRequest context;
 
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Carpaccio.class);
+    private static final Logger logger = Logger.getLogger("com.ocelotcr.orderform");
     private OrderManage orderManage = new OrderManage();
 
     @RequestMapping(path = "/orderform", method = RequestMethod.GET)
@@ -39,11 +37,13 @@ public class OrderFormController {
                                          @RequestParam("silverQuantity") String silverQuantity,
                                          @RequestParam("bronzeQuantity") String bronzeQuantity) {
         try{
-            orderManage.createNewOrder(firstName, secondName, emailAddress,
+            Integer orderNumber = orderManage.createNewOrder(firstName, secondName, emailAddress,
                     phoneNumber,Integer.parseInt(goldQuantity),Integer.parseInt(silverQuantity),Integer.parseInt(bronzeQuantity));
+            logger.info("Order Created : ".concat(orderNumber.toString()));
+            JSONBuilder jsonBuilder = new JSONBuilder().addField(orderNumber.toString()).endField().end();
                 return ResponseEntity.ok(HttpStatus.OK);
         }catch(Exception e){
-            Logger.getGlobal().log(Level.WARNING, "Context : " + e.toString());
+            logger.error("Context : " + e.toString());
             return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
         }
     }

@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Controller
 public class StatusController {

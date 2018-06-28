@@ -1,8 +1,6 @@
 package com.ocelotcr.utility;
 
-import com.ocelotcr.Carpaccio;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,7 +12,7 @@ import java.util.stream.Stream;
 
 public class FileReader {
 
-    private static final Logger logger = LoggerFactory.getLogger(Carpaccio.class);
+    private static final Logger logger = Logger.getLogger("com.ocelotcr.orderform");
     private final String fileName;
     private List<String> contents = new ArrayList<>();
 
@@ -29,7 +27,7 @@ public class FileReader {
                     .map(String::toString)
                     .collect(Collectors.toList());
         } catch (IOException e) {
-            logger.info("File Name doesnt exist {}", fileName);
+            logger.error("File Name doesnt exist".concat(fileName));
         }
     }
 

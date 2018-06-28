@@ -1,14 +1,12 @@
 package com.ocelotcr.entity;
 
-import com.ocelotcr.Carpaccio;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.time.LocalDateTime;
 
 public class PageConnection {
 
-    private static final Logger logger = LoggerFactory.getLogger(Carpaccio.class);
+    private static final Logger logger = Logger.getLogger("com.ocelotcr.orderform");
     private String address;
     private LocalDateTime connectionTime;
     private String pageVisit;
@@ -17,8 +15,8 @@ public class PageConnection {
         this.address = address;
         this.connectionTime = connectionTime;
         this.pageVisit = pageVisit;
-        logger.debug("connector ip {}", address);
-        logger.debug("pageVisted  {}", pageVisit);
+            logger.debug("connector ip ".concat(address));
+        logger.debug("pageVisted  ".concat(pageVisit));
     }
 
     @Override

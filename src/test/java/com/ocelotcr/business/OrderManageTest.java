@@ -18,7 +18,7 @@ public class OrderManageTest {
 
     @Test
     public void should_CreateOrder_ThenReturnTrue(){
-        assertTrue(orderManage.createNewOrder("Ron","Phillips","ronPhil@phillips.com",
+        assertNotNull(orderManage.createNewOrder("Ron","Phillips","ronPhil@phillips.com",
                 "0161", 1,2,3));
     }
 
