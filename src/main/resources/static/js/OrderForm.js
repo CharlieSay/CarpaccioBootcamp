@@ -1,11 +1,11 @@
-function orderFormLoad(){
-    $(document).ready(function () {
-            $('#orderNumber').hide();
-            $('#submit').prop('disabled', true);
+function orderFormLoad() {
+    $(document).ready(function() {
+        $('#orderNumber').hide();
+        $('#submit').prop('disabled', true);
     });
 }
 
-function checkContents(document){
+function checkContents(document) {
     $('#submit').prop('disabled', false);
 }
 
@@ -17,35 +17,34 @@ function processOrder(document) {
     var orderContentsGold = document.getElementById('goldOrder').value;
     var orderContentsSilver = document.getElementById('silverOrder').value;
     var orderContentsBronze = document.getElementById('bronzeOrder').value;
-    fetch('http://localhost:8080/orderform' +
-        '?firstName=' + firstName +
-        '&secondName=' + secondName +
-        '&emailAddress=' + email +
-        '&phoneNumber=' + phoneNumber +
-        '&goldQuantity=' + orderContentsGold +
-        '&silverQuantity=' + orderContentsSilver +
-        '&bronzeQuantity=' + orderContentsBronze, {
+    fetch('http://localhost:8080/orderform'
+        + '?firstName=' + firstName
+        + '&secondName=' + secondName
+        + '&emailAddress=' + email
+        + '&phoneNumber=' + phoneNumber
+        + '&goldQuantity=' + orderContentsGold
+        + '&silverQuantity=' + orderContentsSilver
+        + '&bronzeQuantity=' + orderContentsBronze, {
         method: "POST",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
         }
-    }).then(function (a) {
+    }).then(function(a) {
         return a.json(); // call the json method on the response to get JSON
-    })
-        .then(function (json) {
-            removeJson(json)
-        });
+    }).then(function(json) {
+        removeJson(json)
+    });
     clearPage();
 }
 
-function removeJson(json){
+function removeJson(json) {
     var stringJson = json.orderNumber
     console.log(stringJson);
     document.getElementById('orderNumber').innerText = "Order Number : " + stringJson;
 }
 
-function clearPage(){
+function clearPage() {
     document.getElementById('firstName').value = '';
     document.getElementById('secondName').value = '';
     document.getElementById('emailAddress').value = '';
@@ -59,7 +58,7 @@ function clearPage(){
 }
 
 function stateChange() {
-    setTimeout(function () {
+    setTimeout(function() {
         $('#orderNumber').fadeOut('slow');
     }, 5000);
 }
