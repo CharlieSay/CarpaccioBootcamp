@@ -3,10 +3,22 @@ function orderFormLoad() {
         $('#orderNumber').hide();
         $('#submit').prop('disabled', true);
     });
+    document.getElementById("bronzeOrder").addEventListener("click", checkContents);
+    document.getElementById("silverOrder").addEventListener("click", checkContents);
+    document.getElementById("goldOrder").addEventListener("click", checkContents);
+    document.getElementById("phoneNumber").addEventListener("click", checkContents);
+    document.getElementById("emailAddress").addEventListener("click", checkContents);
+    document.getElementById("secondName").addEventListener("click", checkContents);
+    document.getElementById("firstName").addEventListener("click", checkContents);
 }
 
-function checkContents(document) {
-    $('#submit').prop('disabled', false);
+function checkContents() {
+    if ($('#firstName').length > 0 && $('#secondName').length > 0 && $('#emailAddress').length > 0
+        && $('#phoneNumber').length > 0){
+        $('#submit').prop('disabled', false);
+    }else{
+        $('#submit').prop('disabled', true);
+    }
 }
 
 function processOrder(document) {
@@ -39,7 +51,7 @@ function processOrder(document) {
 }
 
 function removeJson(json) {
-    var stringJson = json.orderNumber
+    var stringJson = json.orderNumber;
     console.log(stringJson);
     document.getElementById('orderNumber').innerText = "Order Number : " + stringJson;
 }

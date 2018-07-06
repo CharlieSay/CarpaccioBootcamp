@@ -2,16 +2,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
-    <title>Carpaccio</title><%--<script type="text/javascript" src="/js/getText.js"></script>--%>
-    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"><!--
-    <spring:url value="/css/main.css" var="springCss" />
-    <link href="${springCss}" rel="stylesheet" />
-     -->
-    <link href="${jstlCss}" rel="stylesheet">
-    <script src="/js/HomePage.js" type="text/javascript">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-    </script>
+    <title>Carpaccio</title>
+    <%--<script type="text/javascript" src="/js/getText.js"></script>--%>
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!--
+	<spring:url value="/css/main.css" var="springCss" />
+	<link href="${springCss}" rel="stylesheet" />
+	 -->
+    <c:url value="/css/HomePage.css" var="jstlCss" />
+    <link href="${jstlCss}" rel="stylesheet" />
+    <script type="text/javascript" src="/js/HomePage.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
 <script src="https://l2.io/ip.js?var=userip" type="text/javascript">

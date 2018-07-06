@@ -3,13 +3,17 @@
 <html lang="en">
 <head>
     <title>Order Form</title>
-    <script src="/js/OrderForm.js" type="text/javascript">
-    </script>
-    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="${springCss}" rel="stylesheet">
-    <link href="${jstlCss}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-    </script>
+    <script type="text/javascript" src="/js/OrderForm.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+
+    <spring:url value="/css/ProductCatalogue.css" var="springCss" />
+    <link href="${springCss}" rel="stylesheet" />
+
+    <c:url value="/css/HomePage.css" var="jstlCss"/>
+    <link href="${jstlCss}" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body onload="orderFormLoad()">
 <nav class="navbar navbar-inverse">

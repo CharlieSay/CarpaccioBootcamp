@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class OrderFormControllerTest {
 
-    OrderFormController orderFormController = new OrderFormController();
+    private OrderFormController orderFormController = new OrderFormController();
 
     @Test
     public void should_ReturnOK_WhenOrderIsValid(){
@@ -16,7 +16,7 @@ public class OrderFormControllerTest {
                 "John","Doe","foo@bar.com","01618307000",
                 "3","5","7");
 
-        assertEquals(ResponseEntity.ok(HttpStatus.OK),result);
+        assertTrue(result.toString().contains("orderNumber"));
     }
 
     @Test
