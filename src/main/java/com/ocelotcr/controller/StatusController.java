@@ -24,7 +24,18 @@ public class StatusController {
         return "TrackProgress";
     }
 
-    @RequestMapping(value = "/status/{orderId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/status/{orderId}", method = RequestMethod.GET)
+    public String getOrderSingular(@PathVariable(value = "orderId") String orderId, Map<String, Object> model) {
+        Order orderRequest = new OrderManage().getOrderFromList(orderId);
+        model.put("firstName",orderRequest.getFirstName());
+        model.put("secondName",orderRequest.getSecondName());
+        model.put("phoneNumber",orderRequest.getPhoneNumber());
+        model.put("orderProgress",orderRequest.getOrderProgress().toString());
+        model.put("emailAddress",orderRequest.getEmailAddress());
+        return "TrackProgress";
+    }
+
+    @RequestMapping(value = "/status/json/{orderId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getOrderDetails(@PathVariable(value = "orderId") String orderId){
         Order orderRequest = new OrderManage().getOrderFromList(orderId);
         JSONBuilder jsonBuilder = new JSONBuilder()

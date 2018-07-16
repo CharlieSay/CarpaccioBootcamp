@@ -6,8 +6,6 @@
     <%--<script type="text/javascript" src="/js/getText.js"></script>--%>
     <link rel="stylesheet" type="text/css"
           href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
-
     <spring:url value="/css/ProductCatalogue.css" var="springCss" />
     <link href="${springCss}" rel="stylesheet" />
 

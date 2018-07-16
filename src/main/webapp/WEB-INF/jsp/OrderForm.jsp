@@ -15,7 +15,7 @@
     <link href="${jstlCss}" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
-<body onload="orderFormLoad()">
+<body onload="formLoad()">
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">

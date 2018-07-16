@@ -5,11 +5,11 @@ function orderFormLoad() {
     });
     document.getElementById("bronzeOrder").addEventListener("click", checkContents);
     document.getElementById("silverOrder").addEventListener("click", checkContents);
-    document.getElementById("goldOrder").addEventListener("click", checkContents);
-    document.getElementById("phoneNumber").addEventListener("click", checkContents);
-    document.getElementById("emailAddress").addEventListener("click", checkContents);
-    document.getElementById("secondName").addEventListener("click", checkContents);
-    document.getElementById("firstName").addEventListener("click", checkContents);
+document.getElementById("goldOrder").addEventListener("click", checkContents);
+document.getElementById("phoneNumber").addEventListener("click", checkContents);
+document.getElementById("emailAddress").addEventListener("click", checkContents);
+document.getElementById("secondName").addEventListener("click", checkContents);
+document.getElementById("firstName").addEventListener("click", checkContents);
 }
 
 function checkContents() {

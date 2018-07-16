@@ -36,7 +36,9 @@ public class OrderFormController {
             Integer orderNumber = orderManage.createNewOrder(firstName, secondName, emailAddress,
                     phoneNumber,Integer.parseInt(goldQuantity),Integer.parseInt(silverQuantity),Integer.parseInt(bronzeQuantity));
             logger.info("Order Created : ".concat(orderNumber.toString()));
-            JSONBuilder jsonBuilder = new JSONBuilder().addLine("orderNumber",orderNumber.toString()).end();
+            JSONBuilder jsonBuilder = new JSONBuilder()
+                    .addLine("orderNumber",orderNumber.toString())
+                    .end();
                 return ResponseEntity.ok(jsonBuilder.toString());
         }catch(Exception e){
             logger.error("Context : " + e.toString());
